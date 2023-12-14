@@ -6,7 +6,7 @@ import { TodosService } from './todos.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Todo])],
-  controllers: [TodosController],
   providers: [TodosService],
+  controllers: [TodosController],
 })
 export class TodosModule {}

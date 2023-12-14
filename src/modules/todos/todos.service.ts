@@ -11,7 +11,7 @@ export class TodosService {
   ) {}
 
   async create(dto: CreateTodoDto) {
-    const todo = this?.todoRepository.create(dto);
+    const todo = this.todoRepository.create(dto);
 
     return await this.todoRepository.save(todo);
   }
@@ -30,6 +30,12 @@ export class TodosService {
 
     Object.assign(todo, dto);
 
-    await this.todoRepository.save(todo);
+    return await this.todoRepository.save(todo);
+  }
+
+  async delete(id: number) {
+    const todo = await this.todoRepository.findOne({ where: { id } });
+
+    return await this.todoRepository.remove(todo);
   }
 }
